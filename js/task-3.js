@@ -1,25 +1,59 @@
-const profile = {
-  username: "Jacob",
-  playTime: 300,
+const getUsersWithFriend = (users, friendName) =>
+  users.filter((user) => user.friends.includes(friendName));
 
-  changeUsername(newName) {
-    this.username = newName;
+const allUsers = [
+  {
+    name: "Moore Hensley",
+    friends: ["Sharron Pace"],
   },
-
-  updatePlayTime(hours) {
-    this.playTime += hours;
+  {
+    name: "Sharlene Bush",
+    friends: ["Briana Decker", "Sharron Pace"],
   },
-
-  getInfo() {
-    return `${this.username} has ${this.playTime} active hours!`;
+  {
+    name: "Ross Vazquez",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
   },
-};
+  {
+    name: "Elma Head",
+    friends: ["Goldie Gentry", "Aisha Tran"],
+  },
+  {
+    name: "Carey Barr",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+  },
+  {
+    name: "Blackburn Dotson",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+  },
+  {
+    name: "Sheree Anthony",
+    friends: ["Goldie Gentry", "Briana Decker"],
+  },
+];
 
-// Перевірка
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+console.log(getUsersWithFriend(allUsers, "Briana Decker"));
+// [
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
 
-profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
+console.log(getUsersWithFriend(allUsers, "Goldie Gentry"));
+// [
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
 
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+console.log(getUsersWithFriend(allUsers, "Adrian Cross")); // []
